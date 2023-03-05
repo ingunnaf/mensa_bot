@@ -1,0 +1,23 @@
+[tool.poetry]
+name = "MensaScraper"
+version = "2.7.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+license = "n"
+readme = "README.md"
+packages = [{include = "tabula_py"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+tabula-py = "2.7.0"
+pandas = "^1.5.3"
+textract = "^1.6.5"
+tabula = "^1.0.5"
+BeautifulSoup = "^3.2.2"
+requests = "^2.28.2"
+PyPDF2 = "^3.0.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
