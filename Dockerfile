@@ -5,16 +5,23 @@ FROM python:3.8-slim
 WORKDIR /app
 
 # Copy the requirements file into the container at /app
-COPY requirements.txt /app/
+COPY requirements.txt .
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
 
 # Copy the rest of the application's code into the container at /app
-COPY . /app/
+COPY . .
 
-# Define environment variables if needed (e.g., API keys)
-#ENV API_KEY=
+# Environment variables must be redefined at run time
+ARG BOT_TOKEN
+ENV BOT_TOKEN=${BOT_TOKEN}
+ARG CHANNEL_ID
+ENV CHANNEL_ID=${CHANNEL_ID}
+ARG LOGGER_ID
+ENV LOGGER_ID=${LOGGER_ID}
+ARG API_KEY
+ENV API_KEY=${API_KEY}
 
 # Command to run your python program
-CMD ["python", "bot.py"]
+CMD ["python3", "bot.py"]

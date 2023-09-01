@@ -1,0 +1,11 @@
+version: '3'
+services:
+  my-telegram-bot:
+    build:
+      context: .
+    volumes:
+      - .:/app
+    env_file:
+      - ./.env  # Specify the path to your .env file
+    environment:
+      - TZ=UTC
