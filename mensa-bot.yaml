@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mensa-bot-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mensa-bot
+  template:
+    metadata:
+      labels:
+        app: mensa-bot
+    spec:
+      containers:
+        - name: mensa-bot-container
+          image: ingunnaf/mensa-bot:latest  
+          ports:
+            - containerPort: 80  
+          env:
+            - name: BOT_TOKEN
+              value: #insert-secret 
+            - name: CHANNEL_ID
+              value: #insert-secret 
+            - name: LOGGER_ID
+              value: #insert-secret
+            - name: API_KEY
+              value: #insert-secret
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mensa-bot-service
+spec:
+  selector:
+    app: mensa-bot-app
+  ports:
+    - protocol: TCP
+      port: 80  
+      targetPort: 80  
+  type: ClusterIP  

@@ -13,7 +13,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Copy the rest of the application's code into the container at /app
 COPY . .
 
-# Environment variables must be redefined at run time
+#Environment variables must be redefined at run time
 ARG BOT_TOKEN
 ENV BOT_TOKEN=${BOT_TOKEN}
 ARG CHANNEL_ID
@@ -22,6 +22,7 @@ ARG LOGGER_ID
 ENV LOGGER_ID=${LOGGER_ID}
 ARG API_KEY
 ENV API_KEY=${API_KEY}
+
 
 # Command to run your python program
 CMD ["python3", "bot.py"]
