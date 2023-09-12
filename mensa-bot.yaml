@@ -19,13 +19,13 @@ spec:
             - containerPort: 80  
           env:
             - name: BOT_TOKEN
-              value: #insert-secret 
+              value: ${{ secrets.BOT_TOKEN }}
             - name: CHANNEL_ID
-              value: #insert-secret 
+              value: ${{ secrets.CHANNEL_ID }}
             - name: LOGGER_ID
-              value: #insert-secret
+              value: ${{ secrets.LOGGER_ID }}
             - name: API_KEY
-              value: #insert-secret
+              value: ${{ secrets.API_KEY }}
 ---
 apiVersion: v1
 kind: Service
